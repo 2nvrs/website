@@ -10,7 +10,7 @@ const LoadingScreen: FC<LoadingScreenProps> = ({ onLoadComplete }) => {
     <div className="loading-screen" onClick={onLoadComplete}>
       <div className="loading-content">
         <div className="loading-spinner" />
-        <div className="loading-text">Loading</div>
+        <div className="loading-text">loading</div>
       </div>
     </div>
   );
