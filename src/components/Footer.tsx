@@ -3,7 +3,7 @@ import { FC } from 'react';
 const Footer: FC = () => {
   return (
     <footer className="footer">
-      <p>&copy; {new Date().getFullYear()} My TSX Website. All rights reserved.</p>
+      <p>&copy; {new Date().getFullYear()} cnvrs browser</p>
     </footer>
   );
 };
