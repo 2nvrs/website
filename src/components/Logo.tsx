@@ -7,7 +7,7 @@ const Logo: FC = () => {
     <div className="logo-container">
       <img 
         src={logoImage}
-        alt="Logo" 
+        alt="cnvrs browser" 
         className="glowing-logo"
         draggable="false"
       />
