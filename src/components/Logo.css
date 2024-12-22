@@ -1,0 +1,15 @@
+.logo-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 2rem;
+}
+
+.glowing-logo {
+  width: 150px;
+  height: auto;
+  filter: drop-shadow(0 0 8px #ffffff)
+         drop-shadow(0 0 15px #ffffff)
+         drop-shadow(0 0 20px #ffffff);
+  animation: sharedGlow 2s ease-in-out infinite alternate;
+  animation-delay: 3s;
+}

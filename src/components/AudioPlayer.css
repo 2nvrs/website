@@ -1,0 +1,120 @@
+@font-face {
+  font-family: 'Underrated';
+  src: url('/UNDERRATED-UltraBold Personal Use.otf') format('opentype');
+  font-weight: bold;
+  font-style: normal;
+}
+
+.audio-player-wrapper {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  opacity: 0;
+  animation: fadeIn 0.5s ease-out forwards;
+  animation-delay: 3.5s;
+  transition: all 0.3s ease;
+  border-radius: 12px;
+  padding: 15px 20px;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(10px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  overflow: visible;
+}
+
+.visualizer {
+  display: flex;
+  align-items: flex-end;
+  gap: 1px;
+  height: 400px;
+  width: 300px;
+  padding: 0 10px;
+  overflow: visible;
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.bar {
+  flex: 1;
+  min-height: 2px;
+  background-color: #2ecc71;
+  transition: height 0.03s linear;
+  border-radius: 1px;
+  transform-origin: bottom;
+  will-change: height;
+}
+
+.bar {
+  box-shadow: 0 0 20px rgba(46, 204, 113, 0.5);
+}
+
+.song-info {
+  text-align: center;
+  color: white;
+}
+
+.song-title {
+  font-size: 14px;
+  font-weight: 500;
+  margin-bottom: 2px;
+}
+
+.song-artist {
+  font-size: 12px;
+  opacity: 0.7;
+}
+
+.song-version {
+  font-size: 11px;
+  opacity: 0.5;
+}
+
+.audio-player-wrapper:hover {
+  background: rgba(0, 0, 0, 0.7);
+}
+
+.custom-audio-player {
+  filter: invert(1) hue-rotate(180deg);
+  opacity: 0.9;
+}
+
+.custom-audio-player::-webkit-media-controls-panel {
+  background-color: transparent;
+}
+
+.click-hint {
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 12px;
+  margin-top: 4px;
+  text-align: right;
+}
+
+@keyframes pulse {
+  0% { opacity: 0.8; }
+  50% { opacity: 1; }
+  100% { opacity: 0.8; }
+}
+
+.bar {
+  animation: pulse 2s ease-in-out infinite;
+}
+
+.unalog-text {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  color: white;
+  font-family: 'Underrated', sans-serif;
+  font-weight: bold;
+  font-size: 24px;
+  letter-spacing: 0.05em;
+  opacity: 0;
+  animation: fadeIn 0.5s ease-out forwards;
+  animation-delay: 3.5s;
+  transition: opacity 0.3s ease;
+} 

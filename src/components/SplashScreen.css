@@ -1,0 +1,144 @@
+.splash-screen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.95);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  opacity: 0;
+  transition: all 0.8s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.splash-screen.visible {
+  opacity: 1;
+}
+
+.splash-screen.fade-out {
+  opacity: 0;
+  backdrop-filter: blur(10px);
+  transform: scale(1.1);
+  pointer-events: none;
+  transition: all 0.8s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.splash-content {
+  text-align: center;
+  color: white;
+  padding: 2rem;
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.splash-screen.visible .splash-content {
+  transform: translateY(0);
+}
+
+.verify-btn {
+  padding: 1.4rem 4rem;
+  border: none;
+  border-radius: 50px;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.19, 1, 0.22, 1);
+  background: rgba(255, 255, 255, 0.03);
+  color: white;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  min-width: 320px;
+  width: 320px;
+  height: 65px;
+  position: relative;
+  overflow: visible;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  animation-delay: 0.2s;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  font-weight: 300;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+  position: relative;
+  isolation: isolate;
+}
+
+.verify-btn:hover:not(:disabled) {
+  transform: translateY(-2px) scale(1.02);
+  border-color: rgba(255, 255, 255, 0.5);
+  box-shadow: 
+    0 8px 30px rgba(0, 0, 0, 0.3),
+    0 0 20px rgba(255, 255, 255, 0.1);
+  letter-spacing: 0.25em;
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.verify-btn:active:not(:disabled) {
+  transform: translateY(0) scale(0.99);
+  transition-duration: 0.1s;
+}
+
+.verify-btn.verified {
+  opacity: 0;
+  transform: scale(0.95);
+  transition: all 0.8s cubic-bezier(0.19, 1, 0.22, 1);
+  background: transparent;
+  border-color: transparent;
+}
+
+.btn-text {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  transition: all 0.8s cubic-bezier(0.19, 1, 0.22, 1);
+  white-space: nowrap;
+  overflow: visible;
+  opacity: 1;
+  width: 100%;
+  padding: 0 2rem;
+  position: relative;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.splash-screen.fade-out .splash-content {
+  transform: translateY(-30px);
+  opacity: 0;
+  transition: all 0.8s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+@keyframes pulseGlow {
+  0% {
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+  }
+  100% {
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+  }
+}
+
+.verified .btn-text {
+  opacity: 0;
+  transform: scale(0.9);
+  transition: all 0.8s cubic-bezier(0.19, 1, 0.22, 1);
+}
+ 

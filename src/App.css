@@ -1,0 +1,561 @@
+@font-face {
+  font-family: 'Monument Extended';
+  src: url('/MonumentExtended-Ultrabold.otf') format('opentype');
+  font-weight: 800;
+  font-style: normal;
+}
+
+.app {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #000000;
+  position: relative;
+  overflow: hidden;
+  transition: filter 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.coming-soon {
+  font-size: 4rem;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.8);
+  position: relative;
+  z-index: 2;
+  margin-top: -50px;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: slideUp 0.8s ease-out forwards,
+             textFloat 4s ease-in-out infinite,
+             subtleGlow 3s ease-in-out infinite;
+  animation-delay: 3s;
+  will-change: transform, opacity, filter;
+  -webkit-text-stroke: 1px rgba(255, 255, 255, 0.1);
+  text-shadow: -1px -1px 0 rgba(255, 255, 255, 0.1),  
+                1px -1px 0 rgba(255, 255, 255, 0.1),
+               -1px  1px 0 rgba(255, 255, 255, 0.1),
+                1px  1px 0 rgba(255, 255, 255, 0.1);
+}
+
+@keyframes textFloat {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  gap: 2rem;
+  padding: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  animation: fadeIn 1s ease-out forwards;
+  animation-delay: 2.5s;
+  z-index: 2;
+}
+
+.logo-container {
+  margin-bottom: 0;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: slideUp 0.8s ease-out forwards,
+             textFloat 4s ease-in-out infinite,
+             subtleGlow 3s ease-in-out infinite;
+  animation-delay: 2.8s;
+  will-change: transform, opacity, filter;
+}
+
+.logo-container img {
+  filter: drop-shadow(0 0 0px rgba(255, 255, 255, 0)); /* Initial state */
+  transition: filter 0.3s ease;
+}
+
+.options-button {
+  opacity: 0;
+  animation: fadeIn 0.5s ease-out forwards;
+  animation-delay: 3.2s;
+  z-index: 3;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.logo-container img,
+.coming-soon,
+.options-button,
+.menu-item {
+  user-select: none;
+  -webkit-user-drag: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+}
+
+/* Also add this to prevent dragging of SVG icons */
+.icon {
+  pointer-events: none;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+.bokeh-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+  opacity: 0;
+  animation: fadeIn 1.5s ease-out forwards;
+  animation-delay: 2.5s;
+  transform: translate3d(0, 0, 0);
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: crisp-edges;
+}
+
+.bokeh {
+  position: absolute;
+  border-radius: 50%;
+  opacity: 0;
+  will-change: transform;
+  filter: blur(45px) contrast(1.2);
+  mix-blend-mode: normal;
+  backface-visibility: hidden;
+  transform-style: preserve-3d;
+  -webkit-filter: blur(45px) contrast(1.2);
+  transform: translate3d(0, 0, 0);
+  -webkit-transform: translate3d(0, 0, 0);
+  -webkit-backface-visibility: hidden;
+  perspective: 1000;
+  -webkit-perspective: 1000;
+}
+
+.bokeh-background.visible .bokeh {
+  animation-play-state: running;
+}
+
+@keyframes floatUp {
+  0% {
+    transform: translate3d(0, 0, 0) scale(1);
+    opacity: 0;
+  }
+  15% {
+    opacity: 0.6;
+  }
+  85% {
+    opacity: 0.6;
+  }
+  100% {
+    transform: translate3d(var(--moveX), -100vh, 0) scale(1);
+    opacity: 0;
+  }
+}
+
+.wave-background {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background: #000;
+  opacity: 0;
+  z-index: 0;
+  animation: fadeIn 1.5s ease-out forwards;
+  animation-delay: 2.5s;
+}
+
+.wave {
+  position: absolute;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle at center, transparent 0%, #111 70%);
+  animation: waveMove 25s ease-in-out infinite;
+  opacity: 0.4;
+  transform-origin: center center;
+}
+
+@keyframes waveMove {
+  0%, 100% { 
+    transform: translate(-25%, -25%) rotate(0deg) scale(1); 
+    opacity: 0.4;
+  }
+  50% { 
+    transform: translate(0%, 0%) rotate(180deg) scale(1.1); 
+    opacity: 0.6;
+  }
+}
+
+.matrix-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  opacity: 0;
+  animation: fadeIn 1.5s ease-out forwards;
+  animation-delay: 2.5s;
+}
+
+.matrix-column {
+  position: absolute;
+  top: -100%;
+  width: 2px;
+  height: 100%;
+  color: rgba(255, 255, 255, 0.07);
+  font-size: 1.2rem;
+  text-align: center;
+  animation: matrixRain linear infinite;
+}
+
+.matrix-column span {
+  display: block;
+  opacity: 0;
+  animation: matrixGlow 1.5s ease-out infinite;
+  animation-delay: var(--delay);
+}
+
+@keyframes matrixRain {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(200%); }
+}
+
+@keyframes matrixGlow {
+  0%, 100% { opacity: 0; }
+  50% { opacity: 1; }
+}
+
+.starfield-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  opacity: 0;
+  animation: fadeIn 1.5s ease-out forwards;
+  animation-delay: 2.5s;
+}
+
+.star {
+  position: absolute;
+  width: 2px;
+  height: 2px;
+  background: white;
+  opacity: 0;
+  border-radius: 50%;
+  box-shadow: 0 0 3px rgba(255, 255, 255, 0.3);
+  animation: twinkle infinite ease-in-out;
+  will-change: transform, opacity;
+}
+
+@keyframes twinkle {
+  0%, 100% { 
+    opacity: 0; 
+    transform: scale(1); 
+  }
+  50% { 
+    opacity: 0.3; 
+    transform: scale(1.2);
+    box-shadow: 0 0 4px rgba(255, 255, 255, 0.4);
+  }
+}
+
+.grid-background {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background-image: 
+    linear-gradient(rgba(50,50,50,0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(50,50,50,0.05) 1px, transparent 1px);
+  background-size: 50px 50px;
+  opacity: 0;
+  z-index: 0;
+  animation: fadeIn 1.5s ease-out forwards;
+  animation-delay: 2.5s;
+}
+
+@keyframes gridMove {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(50px); }
+}
+
+/* Keep only these rules for preventing selection and right-click */
+* {
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  pointer-events: auto;
+}
+
+body {
+  -webkit-user-drag: none;
+  -webkit-touch-callout: none;
+  transition: opacity 0.3s ease-out;
+}
+
+body.fade-out {
+  opacity: 0;
+}
+
+/* Optional: Add this to ensure the fade-out is smooth */
+html {
+  background: black;
+}
+
+.unalog-text {
+  font-family: 'Monument Extended', sans-serif;
+  text-transform: lowercase;
+  font-size: 1.2rem;
+  letter-spacing: 0.1em;
+  color: white;
+  opacity: 0;
+  animation: fadeIn 0.5s ease-out forwards;
+  animation-delay: 3.2s;
+}
+
+img {
+  pointer-events: none;
+  -webkit-user-drag: none;
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes subtleGlow {
+  0%, 100% {
+    filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.3))
+           drop-shadow(0 0 8px rgba(255, 255, 255, 0.2));
+  }
+  50% {
+    filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.4))
+           drop-shadow(0 0 12px rgba(255, 255, 255, 0.3))
+           drop-shadow(0 0 15px rgba(255, 255, 255, 0.2));
+  }
+}
+
+.top-indicator {
+  position: fixed;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 134px;
+  height: 28px;
+  cursor: pointer;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  z-index: 1000;
+  opacity: 0;
+  animation: fadeIn 0.5s ease-out forwards;
+  animation-delay: 3.5s;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding-top: 8px;
+}
+
+.top-indicator::after {
+  content: '';
+  width: 36px;
+  height: 5px;
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 100px;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  transform-origin: center;
+}
+
+.top-indicator:hover::after {
+  background: rgba(255, 255, 255, 0.25);
+  width: 42px;
+  transform: scaleY(0.8);
+}
+
+.top-indicator.active::after {
+  background: rgba(255, 255, 255, 0.3);
+  width: 42px;
+  transform: scaleY(0.8);
+}
+
+.credits-menu {
+  position: fixed;
+  top: -100%;
+  left: 0;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.85);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  z-index: 999;
+  transition: all 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+  padding: 80px 20px 40px;
+  color: rgba(255, 255, 255, 0.9);
+  text-align: center;
+  transform: translateY(-20px);
+  opacity: 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.credits-menu.open {
+  top: 0;
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.credits-menu h2 {
+  font-size: 1.8rem;
+  font-weight: 500;
+  margin-bottom: 1.5rem;
+  letter-spacing: -0.02em;
+}
+
+.credits-menu p {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.7);
+  margin: 0.5rem 0;
+  font-weight: 400;
+}
+
+.credits-section {
+  margin: 2rem 0;
+  padding: 0 1rem;
+}
+
+.credits-section h3 {
+  font-size: 1.2rem;
+  color: rgba(255, 255, 255, 0.9);
+  margin-bottom: 1rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+.credits-section ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.credits-section li {
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.8);
+  margin: 0.8rem 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.credits-section li span {
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 0.9rem;
+}
+
+.copyright {
+  margin-top: 3rem;
+  color: rgba(255, 255, 255, 0.4);
+  font-size: 0.9rem;
+}
+
+/* When you're ready to add user photos */
+.unalogians li {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.unalogians img {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+/* Theme toggle button */
+.theme-toggle {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background: transparent;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  z-index: 1000;
+  padding: 8px;
+  border-radius: 50%;
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  opacity: 1;
+  mix-blend-mode: difference;
+}
+
+.theme-toggle:hover {
+  transform: scale(1.1);
+}
+
+.inverted {
+  filter: invert(1) hue-rotate(180deg);
+  animation: themeSwitch 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Keep theme toggle visible in both modes */
+.inverted .theme-toggle {
+  filter: none;
+  animation: iconSpin 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Optional: If you want to keep the icon colors consistent in both modes */
+.theme-toggle {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background: transparent;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  z-index: 1000;
+  padding: 8px;
+  border-radius: 50%;
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  opacity: 1;
+  mix-blend-mode: difference;
+}
+
+@keyframes themeSwitch {
+  0% {
+    filter: invert(0) hue-rotate(0deg);
+  }
+  100% {
+    filter: invert(1) hue-rotate(180deg);
+  }
+}
+
+@keyframes iconSpin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}

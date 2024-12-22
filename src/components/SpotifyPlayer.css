@@ -1,0 +1,31 @@
+.spotify-player {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  transform: none;
+  opacity: 0;
+  animation: fadeIn 0.5s ease-out forwards;
+  animation-delay: 3.5s;
+  filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.1));
+  transition: all 0.3s ease;
+}
+
+.spotify-player:hover {
+  filter: drop-shadow(0 0 15px rgba(255, 255, 255, 0.2));
+  transform: scale(1.02);
+}
+
+.spotify-player audio {
+  border-radius: 12px;
+  background: #000000;
+}
+
+/* Style the audio player to match your theme */
+.spotify-player audio::-webkit-media-controls-panel {
+  background-color: #000000;
+}
+
+.spotify-player audio::-webkit-media-controls-current-time-display,
+.spotify-player audio::-webkit-media-controls-time-remaining-display {
+  color: #ffffff;
+}

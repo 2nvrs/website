@@ -1,0 +1,67 @@
+.options-menu {
+  position: fixed;
+  top: 70px;
+  left: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  opacity: 0;
+  transform: translateY(-10px);
+  transition: all 0.3s ease;
+  pointer-events: none;
+}
+
+.options-menu.open {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: all;
+}
+
+.menu-item {
+  position: relative;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  transition: all 0.3s ease;
+}
+
+.menu-item::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  left: 50px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0, 0, 0, 0.95);
+  color: #ffffff;
+  padding: 5px 10px;
+  border-radius: 4px;
+  font-size: 14px;
+  white-space: nowrap;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 0 10px #ffffff;
+}
+
+.menu-item:hover::after {
+  opacity: 1;
+  visibility: visible;
+  left: 60px;
+}
+
+.icon {
+  width: 24px;
+  height: 24px;
+  filter: drop-shadow(0 0 5px #ffffff);
+  color: #ffffff;
+  transition: all 0.3s ease;
+}
+
+.menu-item:hover .icon {
+  filter: drop-shadow(0 0 10px #ffffff);
+}
+ 
