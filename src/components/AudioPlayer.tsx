@@ -155,7 +155,7 @@ const CustomAudioPlayer: FC = () => {
   }, []);
 
   useEffect(() => {
-    const texts = ['unalog', 'presents...', 'cnvrs Browser'];
+    const texts = ['unalog', 'presents...', 'cnvrs browser'];
     let currentIndex = 0;
     
     const interval = setInterval(() => {
