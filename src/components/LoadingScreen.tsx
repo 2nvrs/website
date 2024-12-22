@@ -6,7 +6,7 @@ const LoadingScreen: FC = () => {
     <div className="loading-screen">
       <div className="loading-content">
         <div className="loading-spinner" />
-        <div className="loading-text">Loading</div>
+        <div className="loading-text">loading</div>
       </div>
     </div>
   );
