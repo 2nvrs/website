@@ -96,7 +96,7 @@ const App: FC = () => {
           <button 
             className="theme-toggle"
             onClick={toggleTheme}
-            aria-label={isInverted ? 'Switch to dark mode' : 'Switch to light mode'}
+            aria-label={isInverted ? 'switch to dark mode' : 'switch to light mode'}
           >
             {isInverted ? '🌙' : '☀️'}
           </button>
@@ -105,35 +105,31 @@ const App: FC = () => {
             onClick={toggleCredits}
           />
           <div className={`credits-menu ${isCreditsOpen ? 'open' : ''}`}>
-            <h2>Team Credits</h2>
+            <h2>team credits</h2>
             
             <div className="credits-section">
               <h3>builders</h3>
               <ul>
-                <li>.f3ntt <span>unalog studios</span></li>
-                <li>NOVAki <span>Website Builder</span></li>
-                <li>mr camrunna <span>Unalog Dev</span></li>
+                <li>.f3ntt <span>creator</span></li>
+                <li>NOVAki <span>website builder</span></li>
               </ul>
             </div>
 
             <div className="credits-section">
-              <h3>moderators</h3>
+              <h3>contributors</h3>
               <ul>
-                <li>NOVAki <span>mod</span></li>
-                <li>!OA <span>mod</span></li>
-                <li>! cdot <span>mod</span></li>
               </ul>
             </div>
 
             <div className="credits-section">
-              <h3>real unalogians</h3>
+              <h3>cnvrs browser team</h3>
               <ul className="unalogians">
                 {/* Placeholder for user photos and names */}
-                <li>Coming Soon</li>
+                <li>coming soon</li>
               </ul>
             </div>
 
-            <p className="copyright">© 2024 spiristic. All Rights Reserved</p>
+            <p className="copyright">© 2024 spiristic. all rights reserved (not actually)</p>
           </div>
           <div className="grid-background" />
           <div className="bokeh-background visible">
